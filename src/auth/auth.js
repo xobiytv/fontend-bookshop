@@ -4,7 +4,7 @@ const baseURL = 'https://no23.lavina.tech/';
 
 const axiosInstance = axios.create({
   baseURL,
-   location :'/signup' ,
+  //  location :'/signup' ,
   header : 'Key: {MyUserKey}' ,
   header : 'Sign: {2892678138d8d793a28fc49055095d8b}' ,
   header : 'Content-Type: application/json' ,
@@ -19,11 +19,11 @@ export const postRegister = async (userRegisterData) => {
     }
   };
   
-  export const getMyself = () => {
-    return axiosInstance.get('myself')
+  export const getBooks = () => {
+    return axiosInstance.get('books')
         .then(response => response.data)
         .catch(error => {
             throw error;
         });
   };
-  myself    
+      

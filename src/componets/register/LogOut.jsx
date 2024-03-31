@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Input from '../../ui/Input'
 import { postRegister } from '../../auth/auth';
 import { Link, useNavigate } from 'react-router-dom';
+const storedResponse = localStorage.getItem('responseObject');
+export const parsedResponse = storedResponse ? JSON.parse(storedResponse) : '';
 
 export default function LogOut() {
   const [formData, setFormData] = useState({
@@ -22,8 +24,9 @@ export default function LogOut() {
     e.preventDefault();
     try {
       const response = await postRegister(formData);
+      localStorage.setItem('responseObject', JSON.stringify(response.data));
       console.log(response);
-      history('/login');
+      history('/');
     } catch (error) {
       console.log(error);
       // setAlert(<CustomAlert severity="error" message={error.message} />);
